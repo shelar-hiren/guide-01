@@ -2,7 +2,6 @@ import Card from './component/card.jsx';
 import Modal from './component/modal.jsx';
 import Modal2 from './component/modal2.jsx';
 import Age from './component/Age.jsx';
-import Calculator from './component/calculator.js';
 
 import Education from './component/Education.jsx';
 import Language from './component/Language.jsx';
@@ -29,7 +28,6 @@ import {
   faPlus,
   faPlaneDeparture,
     faUserGraduate,
-    faCalculator
 } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
@@ -59,7 +57,6 @@ function App() {
     'Marital Status',
     'Accompanying Spouse',
     'Age',
-    'calculator',
     'Education',
     'Language',
     'Work Experience',
@@ -71,7 +68,6 @@ function App() {
     faRing,
     faPlaneDeparture,
     faCakeCandles,
-    faCalculator,
     faGraduationCap,
     faLanguage,
     faBriefcase,
@@ -94,17 +90,15 @@ function App() {
     'modal',
     'modal2',
     'Age',
-    'calculator',
-    'Ceducation',
     'Education',
     'Language',
     'Work',
+    'Ceducation',
     'Adicional',
   ];
   const valores = [
     '',
     '',
-    ed,
     ed,
     EducationValor,
     idiomaT1 + idiomaT2,
@@ -167,9 +161,6 @@ function App() {
         case 'Age':
           setMview(<Age />);
           break;
-          case 'calculator':
-            setMview(<Calculator />);
-            break;
         case 'Education':
           setMview(<Education />);
           break;
@@ -310,7 +301,6 @@ function App() {
         </div>
         {mview}{' '}
       </div>
-	{/* <Calculator/> */}
       <div className="row justify-content-center">
         <div className="col-md-6 col-sm-8 col-11">
           <div className="row mt-3 justify-content-center">

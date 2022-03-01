@@ -36,8 +36,8 @@ function Age() {
                 const y = parseInt(
                   year.getFullYear() - e.target.value.substr(0, 4)
                 );
-                //  console.log(y)
-                dispatch(agevalor(logica(y, count3)));
+                  console.log({ y})
+                dispatch(agevalor(logica(y.toString(), count3)));
                 dispatch(agevalorL(e.target.value));
               }}
             />
@@ -45,7 +45,7 @@ function Age() {
             {/* <input
               id="entrada"
               onChange={(e) => {
-                // console.log(count3);
+                // 
                 dispatch(agevalor(logica(e.target.value, count3)));
                 dispatch(agevalorL(e.target.value));
               }}

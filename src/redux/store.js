@@ -7,7 +7,6 @@ import idiomaSlice from '../state/state_idioma.js';
 import workSlice from '../state/work.js';
 import adSlice from '../state/Ad.js';
 import SidiomaSlice from "../state/Sstate_idioma.js"
-import ScoreSlice from "../state/score.js"
 
 export default configureStore({
   reducer: {
@@ -18,7 +17,6 @@ export default configureStore({
     idioma: idiomaSlice,
     work: workSlice,
     ad: adSlice,
-    Sidioma: SidiomaSlice,
-    Score: ScoreSlice
+    Sidioma: SidiomaSlice
   },
 });
