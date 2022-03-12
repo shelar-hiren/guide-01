@@ -229,56 +229,152 @@ const LanguageModal = ({ close, submitModal }) => {
 		}
 
 		if (secSelectedLanguage == 1) {
-			if (secListingValue >= 5) {
-				score = score + 1;
+			if (secListingValue >= 6) {
+				if (secListingValue >= 8) {
+					score = score + 6;
+				} else if (secListingValue >= 7.5) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secReadingValue >= 5) {
-				score = score + 1;
+			if (secReadingValue >= 6) {
+				if (secReadingValue >= 8) {
+					score = score + 6;
+				} else if (secReadingValue >= 7.5) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secWritingValue >= 5) {
-				score = score + 1;
+			if (secWritingValue >= 6) {
+				if (secWritingValue >= 8) {
+					score = score + 6;
+				} else if (secWritingValue >= 7.5) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secSpeakingValue >= 5) {
-				score = score + 1;
+			if (secSpeakingValue >= 6) {
+				if (secSpeakingValue >= 8) {
+					score = score + 6;
+				} else if (secSpeakingValue >= 7.5) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
 		} else if (secSelectedLanguage == 2) {
-			if (secListingValue >= 5) {
-				score = score + 1;
+			if (secListingValue >= 7) {
+				if (secListingValue >= 8) {
+					score = score + 6;
+				} else if (secListingValue >= 7) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secReadingValue >= 5) {
-				score = score + 1;
+			if (secReadingValue >= 7) {
+				if (secReadingValue >= 8) {
+					score = score + 6;
+				} else if (secReadingValue >= 7) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secWritingValue >= 5) {
-				score = score + 1;
+			if (secWritingValue >= 7) {
+				if (secWritingValue >= 8) {
+					score = score + 6;
+				} else if (secWritingValue >= 7) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secSpeakingValue >= 5) {
-				score = score + 1;
+			if (secSpeakingValue >= 7) {
+				if (secSpeakingValue >= 8) {
+					score = score + 6;
+				} else if (secSpeakingValue >= 7) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
 		} else if (secSelectedLanguage == 3) {
-			if (secListingValue >= 5) {
-				score = score + 1;
+			if (secListingValue >= 250) {
+				if (secListingValue >= 300) {
+					score = score + 6;
+				} else if (secListingValue >= 280) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secReadingValue >= 5) {
-				score = score + 1;
+			if (secReadingValue >= 210) {
+				if (secReadingValue >= 250) {
+					score = score + 6;
+				} else if (secReadingValue >= 230) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secWritingValue >= 5) {
-				score = score + 1;
+			if (secWritingValue >= 310) {
+				if (secWritingValue >= 370) {
+					score = score + 6;
+				} else if (secWritingValue >= 350) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secSpeakingValue >= 5) {
-				score = score + 1;
+			if (secSpeakingValue >= 310) {
+				if (secSpeakingValue >= 370) {
+					score = score + 6;
+				} else if (secSpeakingValue >= 350) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
 		} else if (secSelectedLanguage == 4) {
-			if (secListingValue >= 5) {
-				score = score + 1;
+			if (secListingValue >= 460) {
+				if (secListingValue >= 520) {
+					score = score + 6;
+				} else if (secListingValue >= 500) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secReadingValue >= 5) {
-				score = score + 1;
+			if (secReadingValue >= 460) {
+				if (secReadingValue >= 520) {
+					score = score + 6;
+				} else if (secReadingValue >= 500) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secWritingValue >= 5) {
-				score = score + 1;
+			if (secWritingValue >= 10) {
+				if (secWritingValue >= 14) {
+					score = score + 6;
+				} else if (secWritingValue >= 12) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
-			if (secSpeakingValue >= 5) {
-				score = score + 1;
+			if (secSpeakingValue >= 10) {
+				if (secSpeakingValue >= 14) {
+					score = score + 6;
+				} else if (secSpeakingValue >= 12) {
+					score = score + 5;
+				} else {
+					score = score + 4;
+				}
 			}
 		}
 		submitModal({ type: 'language', data: score });
@@ -372,9 +468,9 @@ const LanguageModal = ({ close, submitModal }) => {
 												min={0}
 												max={
 													selectedLanguage == 1
-														? 360
+														? 9
 														: selectedLanguage == 2
-														? 360
+														? 12
 														: selectedLanguage == 3
 														? 360
 														: 700
@@ -391,9 +487,9 @@ const LanguageModal = ({ close, submitModal }) => {
 												min={0}
 												max={
 													selectedLanguage == 1
-														? 300
+														? 9
 														: selectedLanguage == 2
-														? 300
+														? 12
 														: selectedLanguage == 3
 														? 300
 														: 700
@@ -409,9 +505,9 @@ const LanguageModal = ({ close, submitModal }) => {
 												min={0}
 												max={
 													selectedLanguage == 1
-														? 450
+														? 9
 														: selectedLanguage == 2
-														? 450
+														? 12
 														: selectedLanguage == 3
 														? 450
 														: 20
@@ -427,9 +523,9 @@ const LanguageModal = ({ close, submitModal }) => {
 												min={0}
 												max={
 													selectedLanguage == 1
-														? 450
+														? 9
 														: selectedLanguage == 2
-														? 450
+														? 12
 														: selectedLanguage == 3
 														? 450
 														: 20

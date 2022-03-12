@@ -44,43 +44,20 @@ export const ScoreSlice = createSlice({
     setAdpType: (state, action) => {
       state.adpType = action.payload;
     },
-    resetData: (state, action) => {
-      state.ageValue = null;
-      state.eduValue = 0;
-      state.expValue = 0;
-      state.language = {
-        selectedLanguage: 0,
-        listingValue: 0,
-        readingValue: 0,
-        writingValue: 0,
-        speakingValue: 0,
-        secSelectedLanguage: 0,
-        secReadingValue: 0,
-        secListingValue: 0,
-        secSpeakingValue: 0,
-        secWritingValue: 0,
-      };
-      state.adpType = {
-        a1: false,
-        a2: false,
-        a3: false,
-        a4: false,
-        a5: false,
-        a6: false,
-        a7: false,
-      };
+    setArrange: (state, action) => {
+      state.arrange = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
+  setArrange,
   setAgeValue,
   setEduValue,
   setExpValue,
   setLang,
   setAdpType,
-  resetData,
 } = ScoreSlice.actions;
 
 export default ScoreSlice.reducer;

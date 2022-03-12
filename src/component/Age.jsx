@@ -17,11 +17,9 @@ function Age() {
 
   const dispatch = useDispatch();
   const onChange = (jsDate, dateString) => {
-    console.log({ jsDate, dateString });
     const date = moment(jsDate).format("YYYY-MM-DD");
     const year = new Date();
     const y = parseInt(year.getFullYear() - date.substr(0, 4));
-    console.log({ y: date });
     dispatch(agevalor(logica(y.toString(), count3)));
     dispatch(agevalorL(date));
   };
@@ -48,20 +46,6 @@ function Age() {
             </div>
 
             <label htmlFor="">Enter your date of birth</label>
-            {/* <input
-              id="entrada"
-              onChange={(e) => {
-                // 
-                dispatch(agevalor(logica(e.target.value, count3)));
-                dispatch(agevalorL(e.target.value));
-              }}
-              type="number"
-              className="bg-p form-control"
-              placeholder="18"
-            />{' '}
-            <label className="text-secondary">
-              Valid age range: from 18 to 45 years
-          </label>*/}
           </div>
           <div className="modal-footer">
             <button
