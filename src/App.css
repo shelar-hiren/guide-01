@@ -216,3 +216,18 @@ button[data-bs-dismiss="modal"] {
   }
 }
 /*  */
+
+.my-custom-datepicker-component input[type="date"]::-webkit-inner-spin-button,
+.my-custom-datepicker-component
+  input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.rounded-border {
+  border-radius: 20px;
+}
+
+.box-shadow {
+  box-shadow: 0px 5px 8px #b5b5b5, 0px -5px 8px #fff;
+}

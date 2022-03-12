@@ -1,24 +1,34 @@
-import { mview2 } from '../state/modals.js';
-import { agevalor, agevalorL } from '../state/valores.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { logica } from './funciones.js';
-
+import { mview2 } from "../state/modals.js";
+import { agevalor, agevalorL } from "../state/valores.js";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { logica } from "./funciones.js";
+import { DatePickerInput } from "rc-datepicker";
+import "rc-datepicker/lib/style.css";
+import moment from "moment";
 function Age() {
   const count3 = useSelector((state) => state.modals.id2);
   //const count4 = useSelector((state) => state.valor.age);
   const count5 = useSelector((state) => state.valor.ageL);
 
   useEffect(() => {
-    document.getElementById('entrada').value = count5;
+    document.getElementById("entrada").value = count5;
   }, [count5]);
 
   const dispatch = useDispatch();
-
+  const onChange = (jsDate, dateString) => {
+    console.log({ jsDate, dateString });
+    const date = moment(jsDate).format("YYYY-MM-DD");
+    const year = new Date();
+    const y = parseInt(year.getFullYear() - date.substr(0, 4));
+    console.log({ y: date });
+    dispatch(agevalor(logica(y.toString(), count3)));
+    dispatch(agevalorL(date));
+  };
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 5 }}
       tabIndex="-1"
     >
       <div className="modal-dialog">
@@ -27,21 +37,17 @@ function Age() {
             <h5 className="modal-title text-secondary">Your age</h5>
           </div>
           <div className="modal-body">
-            <input
-              id="entrada"
-              type="date"
-              className="form-control"
-              onChange={(e) => {
-                const year = new Date();
-                const y = parseInt(
-                  year.getFullYear() - e.target.value.substr(0, 4)
-                );
-                  console.log({ y})
-                dispatch(agevalor(logica(y.toString(), count3)));
-                dispatch(agevalorL(e.target.value));
-              }}
-            />
-      <label htmlFor="">Enter your date of birth</label>
+            <div>
+              <DatePickerInput
+                type="date"
+                format="YYYY/MM/DD"
+                id="entrada"
+                className="my-custom-datepicker-component"
+                onChange={onChange}
+              />
+            </div>
+
+            <label htmlFor="">Enter your date of birth</label>
             {/* <input
               id="entrada"
               onChange={(e) => {

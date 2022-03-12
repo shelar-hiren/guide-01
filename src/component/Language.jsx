@@ -1,9 +1,9 @@
-import { mview2 } from '../state/modals.js';
-import L1 from './language/L1.jsx';
-import L2 from './language/L2.jsx';
-import Score from './language/Score.jsx';
-import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { mview2 } from "../state/modals.js";
+import L1 from "./language/L1.jsx";
+import L2 from "./language/L2.jsx";
+import Score from "./language/Score.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 
 function Language() {
   const dispatch = useDispatch();
@@ -13,6 +13,18 @@ function Language() {
   const a2 = (
     <>
       <button
+        onClick={() => {
+          setLayer(<L1 />);
+          setLayerfooter(a1);
+          setH2("Select Language");
+        }}
+        type="button"
+        className="btn btn-outline-secondary"
+        disabled={next}
+      >
+        Back
+      </button>
+      <button
         type="button"
         className="btn btn-secondary"
         data-bs-dismiss="modal"
@@ -21,18 +33,6 @@ function Language() {
         }}
       >
         Done
-      </button>
-      <button
-        onClick={() => {
-          setLayer(<L1 />);
-          setLayerfooter(a1);
-          setH2('Select Language');
-        }}
-        type="button"
-        className="btn btn-outline-secondary"
-        disabled={next}
-      >
-        Back
       </button>
     </>
   );
@@ -66,7 +66,7 @@ function Language() {
 
   const [layer, setLayer] = useState(<L1 />);
   const [layerfooter, setLayerfooter] = useState(a1);
-  const [h2, setH2] = useState('Select Language');
+  const [h2, setH2] = useState("Select Language");
 
   useEffect(() => {
     setLayerfooter(a1);
@@ -76,7 +76,7 @@ function Language() {
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 5 }}
       tabIndex="-1"
     >
       <div className="modal-dialog">

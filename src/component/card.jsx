@@ -1,12 +1,12 @@
-import '../App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import "../App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Card(props) {
-  console.log({ props })
+  console.log({ props });
   return (
     <div
       onClick={props.onClick}
-      className={`row justify-content-between align-items-center shadow p-3 mb-1 border border-white border-2 rounded ch bg-p ${props.styles}`}
+      className={`row justify-content-between align-items-center box-shadow p-3 mb-1 border border-white border-2 rounded-border ch bg-p ${props.styles}`}
     >
       {/* <img
         src="https://via.placeholder.com/150"
@@ -28,8 +28,8 @@ function Card(props) {
       <div className="col-auto">
         <div className="row align-items-center">
           <div
-            className="col-auto m-2 d-flex justify-content-center align-items-center rounded"
-            style={{ background: '#dee2e4', width: '80px', height: '80px' }}
+            className="col-auto m-2 d-flex justify-content-center align-items-center rounded-border"
+            style={{ background: "#dee2e4", width: "80px", height: "80px" }}
           >
             <FontAwesomeIcon
               className="text-secondary fs-1 m-0"
