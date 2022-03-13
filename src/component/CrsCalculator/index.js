@@ -28,7 +28,11 @@ import {
   faPlus,
   faPlaneDeparture,
   faUserGraduate,
+  faArrowLeft,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import Chart from "react-apexcharts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CrsCalculator() {
   const count = useSelector((state) => state.modals.value);
@@ -97,8 +101,8 @@ function CrsCalculator() {
     "Adicional",
   ];
   const valores = [
-    "",
-    "",
+    0,
+    0,
     ed,
     EducationValor,
     idiomaT1 + idiomaT2,
@@ -290,6 +294,65 @@ function CrsCalculator() {
       return t;
     }
   }
+  const text3 = [
+    "Marital Status",
+    "Accompanying Spouse",
+    "Age",
+    "Education",
+    "Language",
+    "Work Experience",
+    "Canadian Education",
+    "Additional Points",
+    "Spouse Education",
+    "Spouse Language",
+    "Spouse Work Experience",
+  ];
+
+  const valores1 = [
+    ed,
+    EducationValor,
+    idiomaT1 + idiomaT2,
+    worktotal,
+    Ceducationtotal,
+    Adi,
+    Seducationtotal,
+    idiomaTS,
+    Sworkv,
+  ];
+
+  const options = {
+    chart: {
+      height: 350,
+      type: "radialBar",
+    },
+    plotOptions: {
+      radialBar: {
+        dataLabels: {
+          name: {
+            fontSize: "22px",
+          },
+          value: {
+            fontSize: "16px",
+          },
+          total: {
+            show: true,
+            label: "Total",
+            formatter: function ({ config }) {
+              const total = config.series.reduce(
+                (partialSum, a) => partialSum + a,
+                0
+              );
+              return total;
+            },
+          },
+        },
+      },
+    },
+    colors: ["#01A7A3", "#206A5D", "#EADCA6", "#C6B4CE", "#0092CA", "#50717B"],
+    labels: text3,
+  };
+
+  const series = valores1;
 
   return (
     <div className="container-fluid bg-p">
@@ -301,11 +364,146 @@ function CrsCalculator() {
         {mview}{" "}
       </div>
       <div className="row justify-content-center">
-        <div className="col-md-6 col-sm-8 col-11">
+        <div id="web-view" className="row p-0 web-view">
+          <div className="col col-md-8 web-cal">
+            <div className="web-header row">
+              <div className="col-1">
+                <span className="back-arrow">
+                  <FontAwesomeIcon icon={faArrowLeft} />
+                </span>
+              </div>
+              <div className="col">
+                <h2>CRS Calculator</h2>
+              </div>
+              <div className="col text-end">
+                <span className="cursor-pointer">
+                  <Reset iswebView={true} />
+                </span>
+              </div>
+            </div>
+            <div>
+              {text.map((i, index) => {
+                condi(index, con, conr);
+                return (
+                  <div className="col-lg-12" key={i.length}>
+                    <div
+                      onClick={() => {
+                        dispatch(mview1(modales[index]));
+                      }}
+                      className={`row justify-content-between align-items-center  p-3 mb-1 border border-white border-2 bg-p web-card ${es}`}
+                    >
+                      <div className="col-auto">
+                        <div className="row align-items-center">
+                          <button className="col-auto m-2 d-flex justify-content-center align-items-center button button-primary ">
+                            <FontAwesomeIcon
+                              className="fs-6 m-0 fa-sm"
+                              icon={ico[index]}
+                            />
+                          </button>
+                          <div className="col-auto px-0">
+                            <p className="m-0 text-secondary card-text">{i}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            {con2 &&
+              text2.map((i, index) => {
+                return (
+                  <div className="col-lg-12" key={i.length}>
+                    <div
+                      onClick={() => {
+                        dispatch(mview1(d2s[index]));
+                      }}
+                      className={`row justify-content-between align-items-center  p-3 mb-1 border border-white border-2 bg-p web-card ${es}`}
+                    >
+                      <div className="col-auto">
+                        <div className="row align-items-center">
+                          <button className="col-auto m-2 d-flex justify-content-center align-items-center button button-primary ">
+                            <FontAwesomeIcon
+                              className="fs-6 m-0 fa-sm"
+                              icon={ico2[index]}
+                            />
+                          </button>
+                          <div className="col-auto px-0">
+                            <p className="m-0 text-secondary card-text">{i}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            <div>
+              <button
+                onClick={() => {
+                  dispatch(mview1("Analysis"));
+                }}
+                type="button"
+                className="button button-primary default normal icon-left mb-1 rounded m-1"
+              >
+                CRS Analysis
+              </button>
+              <button
+                onClick={() => {
+                  dispatch(mview1("Rec"));
+                }}
+                type="button"
+                className="button button-primary default normal icon-left mb-1 rounded"
+              >
+                Score Recommendations
+              </button>
+            </div>
+          </div>
+          <div className="col col-md-4 background-primary web-score ">
+            <h5>Your Score</h5>
+            <h5> {grantotal()}</h5>
+            <div className="mt-3">
+              {text.map((i, index) => {
+                if (index === 0 || index === 1) return null;
+                return (
+                  <div className="row" key={index}>
+                    <div className="col-9 web-cal-text">{i}</div>
+                    <div className="col">
+                      <p>{valores[index]}</p>
+                    </div>
+                  </div>
+                );
+              })}
+              {con2 && (
+                <span>
+                  {text2.map((i, index) => {
+                    return (
+                      <div className="row" key={index}>
+                        <div className="col-9 web-cal-text">{i}</div>
+                        <div className="col">
+                          <p>{d2v[index]}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </span>
+              )}
+            </div>
+            <div id="chart" className="mt-4 d-flex justify-content-center">
+              <Chart
+                options={options}
+                series={series}
+                type="radialBar"
+                width={380}
+                height={350}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mobile-view col-md-6 col-sm-8 col-11">
           <div className="row mt-3 justify-content-center">
-            <div className="col-12">
+            <div className="col-12 ">
               <div className="row justify-content-center">
-                <div className="col-12">
+                <div className="col-12 sticky-header">
                   <div className="row justify-content-center">
                     <div className="col-12 justify-content-between align-items-center box-shadow p-3 mb-1 border border-white border-2 rounded-border">
                       <h2 className="text-center text-secondary m-0 display-5 fs-5">
@@ -324,7 +522,7 @@ function CrsCalculator() {
                               dispatch(mview1("Analysis"));
                             }}
                             type="button"
-                            className="button button-primary default normal icon-left mb-1"
+                            className="button button-primary default normal icon-left mb-1 rounded"
                           >
                             CRS Analysis
                           </button>
@@ -335,7 +533,7 @@ function CrsCalculator() {
                               dispatch(mview1("Rec"));
                             }}
                             type="button"
-                            className="button button-primary default normal icon-left mb-1"
+                            className="button button-primary default normal icon-left mb-1 rounded"
                           >
                             Score Recommendations
                           </button>

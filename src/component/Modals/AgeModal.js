@@ -1,25 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import { setAgeValue } from "../../state/score";
 import { useDispatch, useSelector } from "react-redux";
+import { DatePickerInput } from "rc-datepicker";
+import "rc-datepicker/lib/style.css";
+
 import { logica } from "../funciones";
 
 const AgeModal = ({ close, submitModal }) => {
   const { ageValue } = useSelector((state) => state.Score);
   const [dateOfBirth, setDateOfBirth] = useState(ageValue);
   const dispatch = useDispatch();
+  useEffect(() => {
+    document.getElementById("entrada").value = dateOfBirth;
+  }, [dateOfBirth]);
+
   const saveDOB = () => {
     if (dateOfBirth) {
-      const date = moment(dateOfBirth).format("YYYY-MM-DD");
       const year = new Date();
-      const y = parseInt(year.getFullYear() - date.substr(0, 4));
+      const y = parseInt(year.getFullYear() - dateOfBirth.substr(0, 4));
       submitModal({ type: "age", data: logica(y.toString()) });
       dispatch(setAgeValue(logica(y.toString())));
     } else {
       alert("Please select date");
     }
   };
+
+  const onChange = (jsDate) => {
+    const date = moment(jsDate).format("YYYY-MM-DD");
+    setDateOfBirth(date);
+  };
+
   return (
     <div
       className="modal"
@@ -34,11 +46,15 @@ const AgeModal = ({ close, submitModal }) => {
             </h5>
           </div>
           <div className="modal-body">
-            <DatePicker
-              placeholderText="Select or type DOB (MM/DD/YYYY)"
-              selected={dateOfBirth}
-              onChange={(date) => setDateOfBirth(date)}
-            />
+            <div>
+              <DatePickerInput
+                type="date"
+                format="YYYY/MM/DD"
+                id="entrada"
+                className="my-custom-datepicker-component"
+                onChange={onChange}
+              />
+            </div>
           </div>
           <div className="modal-footer">
             <button

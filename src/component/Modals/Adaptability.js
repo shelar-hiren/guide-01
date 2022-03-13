@@ -58,44 +58,85 @@ const Adaptability = ({ close, submitModal }) => {
                 Your spouse of partner's language test is equal or greater than
                 CLB4
               </div>
-              <Switch onChange={() => setA1(!a1)} checked={a1} />
+              <Switch
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#5561e2"
+                onChange={() => setA1(!a1)}
+                checked={a1}
+              />
             </div>
             <div className="adp-block">
               <div>Your past studies in canada at least 2 years full time</div>
-              <Switch onChange={() => setA2(!a2)} checked={a2} />
+              <Switch
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#5561e2"
+                onChange={() => setA2(!a2)}
+                checked={a2}
+              />
             </div>
             <div className="adp-block">
               <div>
                 Your spouse or partner's past studies in canada at least 2 years
                 full time
               </div>
-              <Switch onChange={() => setA3(!a3)} checked={a3} />
+              <Switch
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#5561e2"
+                onChange={() => setA3(!a3)}
+                checked={a3}
+              />
             </div>
             <div className="adp-block">
               <div>Your past work ex in canada of at least one year</div>
-              <Switch onChange={() => setA4(!a4)} checked={a4} />
+              <Switch
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#5561e2"
+                onChange={() => setA4(!a4)}
+                checked={a4}
+              />
             </div>
             <div className="adp-block">
               <div>
                 Your spouse or partner's past work ex in canada of at least one
                 year
               </div>
-              <Switch onChange={() => setA5(!a5)} checked={a5} />
+              <Switch
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#5561e2"
+                onChange={() => setA5(!a5)}
+                checked={a5}
+              />
             </div>
             <div className="adp-block">
               <div>Arranged employment in canada</div>
-              <Switch onChange={() => setA6(!a6)} checked={a6} />
+              <Switch
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#5561e2"
+                onChange={() => setA6(!a6)}
+                checked={a6}
+              />
             </div>
             <div className="adp-block">
               <div>Blood relatives in canada</div>
-              <Switch onChange={() => setA7(!a7)} checked={a7} />
+              <Switch
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#5561e2"
+                onChange={() => setA7(!a7)}
+                checked={a7}
+              />
             </div>
           </div>
           <div className="modal-footer">
             <button
               type="button"
               className="btn btn-outline-secondary"
-              //   data-bs-dismiss="modal"
               onClick={close}
             >
               Close
