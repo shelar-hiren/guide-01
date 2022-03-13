@@ -1,7 +1,7 @@
-import { mview2 } from '../state/modals.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { setswork, setsworkv } from '../state/valores.js';
+import { mview2 } from "../state/modals.js";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { setswork, setsworkv } from "../state/valores.js";
 
 function Swork() {
   const dispatch = useDispatch();
@@ -11,50 +11,50 @@ function Swork() {
 
   function validandocanadian() {
     switch (data) {
-      case '1':
-        return 'year';
+      case "1":
+        return "year";
         //eslint-disable-next-line
         break;
-      case '2':
-        return 'years';
+      case "2":
+        return "years";
         //eslint-disable-next-line
         break;
-      case '3':
-        return 'years';
+      case "3":
+        return "years";
         //eslint-disable-next-line
         break;
-      case '4':
-        return 'years';
+      case "4":
+        return "years";
         //eslint-disable-next-line
         break;
-      case '5':
-        return 'or more years';
+      case "5":
+        return "or more years";
         //eslint-disable-next-line
         break;
       default:
-        return '';
+        return "";
     }
   }
 
   function totales() {
     switch (data) {
-      case '1':
+      case "1":
         dispatch(setsworkv(5));
         //eslint-disable-next-line
         break;
-      case '2':
+      case "2":
         dispatch(setsworkv(7));
         //eslint-disable-next-line
         break;
-      case '3':
+      case "3":
         dispatch(setsworkv(8));
         //eslint-disable-next-line
         break;
-      case '4':
+      case "4":
         dispatch(setsworkv(9));
         //eslint-disable-next-line
         break;
-      case '5':
+      case "5":
         dispatch(setsworkv(10));
         //eslint-disable-next-line
         break;
@@ -65,13 +65,13 @@ function Swork() {
 
   useEffect(() => {
     totales();
-      //eslint-disable-next-line
+    //eslint-disable-next-line
   }, [data]);
 
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
       <div className="modal-dialog">

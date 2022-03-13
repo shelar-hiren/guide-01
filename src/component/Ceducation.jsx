@@ -34,7 +34,7 @@ function Ceducation() {
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: 'block', background: '#21004454', zIndex: 99999 }}
       tabIndex="-1"
     >
       <div className="modal-dialog">

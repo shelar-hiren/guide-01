@@ -1,7 +1,7 @@
-import { mview2 } from '../state/modals.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { sets1, sets2, sets3, settotal } from '../state/Ad.js';
-import { useEffect } from 'react';
+import { mview2 } from "../state/modals.js";
+import { useDispatch, useSelector } from "react-redux";
+import { sets1, sets2, sets3, settotal } from "../state/Ad.js";
+import { useEffect } from "react";
 
 function Adicional() {
   const dispatch = useDispatch();
@@ -11,80 +11,80 @@ function Adicional() {
 
   function logica() {
     // console.log(sp + ":" + sp2 + ":" + sp3);
-    switch (sp + ':' + sp2 + ':' + sp3) {
-      case 'aaa1:false:false':
+    switch (sp + ":" + sp2 + ":" + sp3) {
+      case "aaa1:false:false":
         return 200;
         //eslint-disable-next-line
         break;
-      case 'aaa2:false:false':
+      case "aaa2:false:false":
         return 50;
         //eslint-disable-next-line
         break;
-      case 'aaa1:false:':
+      case "aaa1:false:":
         return 200;
         //eslint-disable-next-line
         break;
-      case 'aaa2:false:':
+      case "aaa2:false:":
         return 50;
         //eslint-disable-next-line
         break;
-      case 'aaa1::':
+      case "aaa1::":
         return 200;
         //eslint-disable-next-line
         break;
-      case 'aaa2::':
+      case "aaa2::":
         return 50;
         //eslint-disable-next-line
         break;
-      case 'aaa1:true:false':
+      case "aaa1:true:false":
         return 215;
         //eslint-disable-next-line
         break;
-      case 'aaa2:true:false':
+      case "aaa2:true:false":
         return 65;
         //eslint-disable-next-line
         break;
-      case 'aaa1:true:':
+      case "aaa1:true:":
         return 215;
         //eslint-disable-next-line
         break;
-      case 'aaa2:true:':
+      case "aaa2:true:":
         return 65;
         //eslint-disable-next-line
         break;
-      case '::true':
+      case "::true":
         return 600;
         //eslint-disable-next-line
         break;
-      case 'aaa1::true':
+      case "aaa1::true":
         return 600;
         //eslint-disable-next-line
         break;
-      case 'aaa2::true':
+      case "aaa2::true":
         return 600;
         //eslint-disable-next-line
         break;
-      case 'aaa1:false:true':
+      case "aaa1:false:true":
         return 600;
         //eslint-disable-next-line
         break;
-      case 'aaa2:false:true':
+      case "aaa2:false:true":
         return 600;
         //eslint-disable-next-line
         break;
-      case 'aaa1:true:true':
+      case "aaa1:true:true":
         return 600;
         //eslint-disable-next-line
         break;
-      case 'aaa2:true:true':
+      case "aaa2:true:true":
         return 600;
         //eslint-disable-next-line
         break;
-      case ':true:true':
+      case ":true:true":
         return 600;
         //eslint-disable-next-line
         break;
-      case ':false:true':
+      case ":false:true":
         return 600;
         //eslint-disable-next-line
         break;
@@ -112,11 +112,11 @@ function Adicional() {
   }
 
   useEffect(() => {
-    if (!(sp === '')) {
+    if (!(sp === "")) {
       document.getElementById(sp).checked = true;
     }
-    document.getElementById('aaa3').checked = sp2;
-    document.getElementById('aaa4').checked = sp3;
+    document.getElementById("aaa3").checked = sp2;
+    document.getElementById("aaa4").checked = sp3;
     let r = logica();
     //  console.log(r)
     dispatch(settotal(r));
@@ -126,7 +126,7 @@ function Adicional() {
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
       <div className="modal-dialog">
@@ -165,7 +165,7 @@ function Adicional() {
               <label className="form-check-label" htmlFor="aaa2">
                 <b>NOC-O/A/B</b>
               </label>
-            </div>{' '}
+            </div>{" "}
             <div className="mt-4">
               <div className="form-check">
                 <input

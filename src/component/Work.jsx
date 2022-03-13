@@ -1,8 +1,8 @@
-import { mview2 } from '../state/modals.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { setn1w, setn2w, setcheck, settotal } from '../state/work.js';
-import { logicawork, logicawork2 } from './funciones.js';
+import { mview2 } from "../state/modals.js";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { setn1w, setn2w, setcheck, settotal } from "../state/work.js";
+import { logicawork, logicawork2 } from "./funciones.js";
 
 function Work() {
   const n1 = useSelector((state) => state.work.n1);
@@ -19,19 +19,19 @@ function Work() {
   function ctotal() {
     //console.log(count);
     switch (count) {
-      case 'm1':
-        if (count3 === 'y1') {
+      case "m1":
+        if (count3 === "y1") {
           const a = logicawork2(canadian, foreign);
           dispatch(settotal(a));
           //console.log(a);
         } else {
           const a = logicawork(canadian, foreign);
           dispatch(settotal(a));
-         // console.log(canadian, foreign);
+          // console.log(canadian, foreign);
         }
         break;
-      case 'm2':
-        if (count3 === 'y1') {
+      case "m2":
+        if (count3 === "y1") {
           const a = logicawork2(canadian, foreign);
           dispatch(settotal(a));
           //console.log(a);
@@ -54,54 +54,54 @@ function Work() {
 
   function validandocanadian() {
     switch (canadian) {
-      case '1':
-        return 'year';
+      case "1":
+        return "year";
         //eslint-disable-next-line
         break;
-      case '2':
-        return 'years';
+      case "2":
+        return "years";
         //eslint-disable-next-line
         break;
-      case '3':
-        return 'years';
+      case "3":
+        return "years";
         //eslint-disable-next-line
         break;
-      case '4':
-        return 'years';
+      case "4":
+        return "years";
         //eslint-disable-next-line
         break;
-      case '5':
-        return 'or more years';
+      case "5":
+        return "or more years";
         //eslint-disable-next-line
         break;
       default:
-        return '';
+        return "";
     }
   }
 
   function foreigncanadian() {
     switch (foreign) {
-      case '1':
-        return 'year';
+      case "1":
+        return "year";
         //eslint-disable-next-line
         break;
-      case '2':
-        return 'years';
+      case "2":
+        return "years";
         //eslint-disable-next-line
         break;
-      case '3':
-        return 'or more years';
+      case "3":
+        return "or more years";
         //eslint-disable-next-line
         break;
       default:
-        return '';
+        return "";
     }
   }
 
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
       <div className="modal-dialog">

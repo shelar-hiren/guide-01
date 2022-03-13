@@ -1,8 +1,8 @@
-import { mview2 } from '../state/modals.js';
-import { useDispatch } from 'react-redux';
-import L1 from './reco/L1.jsx';
-import L2 from './reco/L2.jsx';
-import { useState } from 'react';
+import { mview2 } from "../state/modals.js";
+import { useDispatch } from "react-redux";
+import L1 from "./reco/L1.jsx";
+import L2 from "./reco/L2.jsx";
+import { useState } from "react";
 
 function Rec() {
   const dispatch = useDispatch();
@@ -41,9 +41,9 @@ function Rec() {
         className="btn btn-dark"
         data-bs-dismiss="modal"
         onClick={() => {
-            setLayer(<L1/>)
-            setBtn(b1)
-            setTxt("Recommendations")
+          setLayer(<L1 />);
+          setBtn(b1);
+          setTxt("Recommendations");
         }}
       >
         Back
@@ -61,13 +61,13 @@ function Rec() {
     </>
   );
   const [btn, setBtn] = useState(b1);
-  const [layer, setLayer] = useState(<L1/>);
-  const [txt, setTxt]= useState("Recommendations")
+  const [layer, setLayer] = useState(<L1 />);
+  const [txt, setTxt] = useState("Recommendations");
 
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
       <div className="modal-dialog">
@@ -75,9 +75,7 @@ function Rec() {
           <div className="modal-header">
             <h5 className="modal-title">{txt}</h5>
           </div>
-          <div className="modal-body">
-      {layer}
-          </div>
+          <div className="modal-body">{layer}</div>
           <div className="modal-footer">{btn}</div>
         </div>
       </div>

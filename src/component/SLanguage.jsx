@@ -1,9 +1,9 @@
-import { mview2 } from '../state/modals.js';
-import L1 from './Slanguage/L1.jsx';
-import L2 from './Slanguage/L2.jsx';
-import Score from './Slanguage/Score.jsx';
-import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { mview2 } from "../state/modals.js";
+import L1 from "./Slanguage/L1.jsx";
+import L2 from "./Slanguage/L2.jsx";
+import Score from "./Slanguage/Score.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 
 function SLanguage() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function SLanguage() {
         onClick={() => {
           setLayer(<L1 />);
           setLayerfooter(a1);
-          setH2('Select Language');
+          setH2("Select Language");
         }}
         type="button"
         className="btn btn-outline-secondary"
@@ -66,7 +66,7 @@ function SLanguage() {
 
   const [layer, setLayer] = useState(<L1 />);
   const [layerfooter, setLayerfooter] = useState(a1);
-  const [h2, setH2] = useState('Select Language');
+  const [h2, setH2] = useState("Select Language");
 
   useEffect(() => {
     setLayerfooter(a1);
@@ -76,7 +76,7 @@ function SLanguage() {
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
       <div className="modal-dialog">

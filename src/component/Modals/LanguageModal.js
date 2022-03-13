@@ -398,7 +398,7 @@ const LanguageModal = ({ close, submitModal }) => {
 		<div
 			className='modal'
 			tabIndex='-1'
-			style={{ display: 'block', background: '#21004454', zIndex: 5 }}>
+			style={{ display: 'block', background: '#21004454', zIndex: 9999 }}>
 			<div className='modal-dialog'>
 				<div className='modal-content bg-p'>
 					<div className='modal-header'>

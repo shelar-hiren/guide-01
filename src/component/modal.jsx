@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { mview2, saveid } from '../state/modals.js';
-import { opciones } from '../state/modals2.js';
-import { setvd1, setvd2 } from '../state/state_idioma.js';
-import { useEffect } from 'react';
-import { logica, EduLogica, logicawork, logicawork2 } from './funciones.js';
-import { agevalor, educationvalor, setsm } from '../state/valores.js';
-import { settotal } from '../state/work.js';
+import { useDispatch, useSelector } from "react-redux";
+import { mview2, saveid } from "../state/modals.js";
+import { opciones } from "../state/modals2.js";
+import { setvd1, setvd2 } from "../state/state_idioma.js";
+import { useEffect } from "react";
+import { logica, EduLogica, logicawork, logicawork2 } from "./funciones.js";
+import { agevalor, educationvalor, setsm } from "../state/valores.js";
+import { settotal } from "../state/work.js";
 
 function Modal() {
   const dispatch = useDispatch();
@@ -47,23 +47,23 @@ function Modal() {
     //console.log(ids2, count5);
 
     if (s) {
-      dispatch(agevalor(logica(count5, 'y2')));
-      dispatch(educationvalor(EduLogica(valorE, 'y2')));
+      dispatch(agevalor(logica(count5, "y2")));
+      dispatch(educationvalor(EduLogica(valorE, "y2")));
       //console.log('no');
       dispatch(setvd1(0));
       dispatch(setvd2(0));
       ctotal(!true);
-      dispatch(setsm('y2'));
+      dispatch(setsm("y2"));
     } else {
       //console.log('yes');
 
-      dispatch(setsm('y1'));
-      if (ids2 === 'y1') {
-        document.querySelectorAll('.row.ch')[1].classList.remove('desabi');
+      dispatch(setsm("y1"));
+      if (ids2 === "y1") {
+        document.querySelectorAll(".row.ch")[1].classList.remove("desabi");
         //  console.log('her', logica(count5, 'y1'), count5);
-        dispatch(agevalor(logica(count5, 'y1')));
+        dispatch(agevalor(logica(count5, "y1")));
 
-        dispatch(educationvalor(EduLogica(valorE, 'y1')));
+        dispatch(educationvalor(EduLogica(valorE, "y1")));
 
         dispatch(setvd1(1));
         dispatch(setvd2(2));
@@ -72,9 +72,9 @@ function Modal() {
         ctotal(!false);
       } else {
         //console.log('her2');
-        dispatch(agevalor(logica(count5, 'y2')));
+        dispatch(agevalor(logica(count5, "y2")));
 
-        dispatch(educationvalor(EduLogica(valorE, 'y2')));
+        dispatch(educationvalor(EduLogica(valorE, "y2")));
 
         dispatch(setvd1(0));
         dispatch(setvd2(0));
@@ -94,8 +94,8 @@ function Modal() {
   useEffect(() => {
     setTimeout(() => {
       //console.log(!(ids===""))
-      if (!(ids === '')) {
-        document.getElementById(ids).classList.add('active');
+      if (!(ids === "")) {
+        document.getElementById(ids).classList.add("active");
       }
     }, 200);
     //eslint-disable-next-line
@@ -105,12 +105,14 @@ function Modal() {
     <div
       className="modal"
       tabIndex="-1"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 9999 }}
     >
       <div className="modal-dialog">
         <div className="modal-content bg-p">
           <div className="modal-header">
-            <h5 className="modal-title text-secondary">Select your Marital Status</h5>
+            <h5 className="modal-title text-secondary">
+              Select your Marital Status
+            </h5>
           </div>
           <div className="modal-body">
             <div className="d-grid gap-2">

@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { mview2, saveid2 } from '../state/modals.js';
-import { agevalor, educationvalor } from '../state/valores.js';
-import { logica, EduLogica, logicawork, logicawork2 } from './funciones.js';
-import { setvd1, setvd2 } from '../state/state_idioma.js';
-import { settotal } from '../state/work.js';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { mview2, saveid2 } from "../state/modals.js";
+import { agevalor, educationvalor } from "../state/valores.js";
+import { logica, EduLogica, logicawork, logicawork2 } from "./funciones.js";
+import { setvd1, setvd2 } from "../state/state_idioma.js";
+import { settotal } from "../state/work.js";
 
 function Modal2() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function Modal2() {
   const foreign = useSelector((state) => state.work.n2);
 
   function ctotal() {
-    if (ids === 'y1') {
+    if (ids === "y1") {
       const a = logicawork2(canadian, foreign);
       dispatch(settotal(a));
       //console.log(a);
@@ -54,8 +54,8 @@ function Modal2() {
   useEffect(() => {
     setTimeout(() => {
       //console.log(!(ids===""))
-      if (!(ids === '')) {
-        document.getElementById(ids).classList.add('active');
+      if (!(ids === "")) {
+        document.getElementById(ids).classList.add("active");
       }
     }, 200);
 
@@ -66,20 +66,22 @@ function Modal2() {
     <div
       className="modal"
       tabIndex="-1"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 9999 }}
     >
       <div className="modal-dialog">
         <div className="modal-content bg-p">
           <div className="modal-header">
-            <h5 className="modal-title text-secondary">Is your spouse accompanying you?</h5>
+            <h5 className="modal-title text-secondary">
+              Is your spouse accompanying you?
+            </h5>
           </div>
           <div className="modal-body">
             <div className="d-grid gap-2">
               <button
                 onClick={(e) => {
                   activo(e.target);
-                  dispatch(agevalor(logica(count5, 'y1')));
-                  dispatch(educationvalor(EduLogica(valorE, 'y1')));
+                  dispatch(agevalor(logica(count5, "y1")));
+                  dispatch(educationvalor(EduLogica(valorE, "y1")));
                   dispatch(setvd1(1));
                   dispatch(setvd2(2));
                 }}
@@ -94,8 +96,8 @@ function Modal2() {
                 onClick={(e) => {
                   //  console.log(valorE)
                   activo(e.target);
-                  dispatch(agevalor(logica(count5, 'y2')));
-                  dispatch(educationvalor(EduLogica(valorE, 'y2')));
+                  dispatch(agevalor(logica(count5, "y2")));
+                  dispatch(educationvalor(EduLogica(valorE, "y2")));
                   dispatch(setvd1(0));
                   dispatch(setvd2(0));
                 }}

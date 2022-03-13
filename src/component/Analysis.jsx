@@ -1,6 +1,6 @@
-import { mview2 } from '../state/modals.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { logicawork, logicawork2, logicawe, logicawf } from './funciones.js';
+import { mview2 } from "../state/modals.js";
+import { useDispatch, useSelector } from "react-redux";
+import { logicawork, logicawork2, logicawe, logicawf } from "./funciones.js";
 //import {useState} from "react"
 
 function Analysis() {
@@ -20,7 +20,7 @@ function Analysis() {
   const worktotal = useSelector((state) => state.work.n1);
   const worktotalf = useSelector((state) => state.work.n2);
   let work = 0;
-  if (count3 + sm === 'y1y1') {
+  if (count3 + sm === "y1y1") {
     work = logicawork2(worktotal, 0);
   } else {
     work = logicawork(worktotal, 0);
@@ -51,11 +51,11 @@ function Analysis() {
     Sibling = 15;
   }
 
-  if (sp === 'aaa1') {
+  if (sp === "aaa1") {
     LMI = 200;
   }
 
-  if (sp === 'aaa2') {
+  if (sp === "aaa2") {
     LMI = 50;
   }
 
@@ -72,21 +72,21 @@ function Analysis() {
   const Spouse_factor = Seducationtotal + Sworkv + idiomaTS;
   const skill = worke + workf;
 
-  let o = '';
+  let o = "";
 
   let TOTAL = 0;
-  if (count3 + sm === 'y1y1') {
+  if (count3 + sm === "y1y1") {
     TOTAL = Additional + core_human + skill + Spouse_factor;
-    o = '';
+    o = "";
   } else {
     TOTAL = Additional + core_human + skill;
-    o = 'd-none';
+    o = "d-none";
   }
 
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 5 }}
+      style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
       <div className="modal-dialog">
@@ -104,7 +104,9 @@ function Analysis() {
                   <th scope="col">
                     <span className="txt-p">Core/Human Factors</span>
                   </th>
-                  <th scope="col" className="txt-p">{core_human}/500</th>
+                  <th scope="col" className="txt-p">
+                    {core_human}/500
+                  </th>
                 </tr>
               </thead>
               <tbody className="text-secondary">
@@ -151,8 +153,12 @@ function Analysis() {
             <table className="table">
               <thead>
                 <tr>
-                  <th scope="col" className="txt-p">Skill Transferability Factors</th>
-                  <th scope="col" className="txt-p">{skill}/100</th>
+                  <th scope="col" className="txt-p">
+                    Skill Transferability Factors
+                  </th>
+                  <th scope="col" className="txt-p">
+                    {skill}/100
+                  </th>
                 </tr>
               </thead>
               <tbody className="text-secondary">
@@ -173,8 +179,12 @@ function Analysis() {
             <table className="table">
               <thead>
                 <tr>
-                  <th scope="col" className="txt-p">Additional Poits</th>
-                  <th scope="col" className="txt-p" >{Additional}/600</th>
+                  <th scope="col" className="txt-p">
+                    Additional Poits
+                  </th>
+                  <th scope="col" className="txt-p">
+                    {Additional}/600
+                  </th>
                 </tr>
               </thead>
               <tbody className="text-secondary">
