@@ -62,7 +62,7 @@ function Age() {
               />
             </div>
 
-            <label htmlFor="">Enter your date of birth</label>
+            {/* <label htmlFor="">Enter your date of birth</label> */}
           </div>
           <div className="modal-footer">
             <button

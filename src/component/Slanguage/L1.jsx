@@ -173,7 +173,7 @@ function L1() {
 
   return (
     <>
-      <h2 className="mb-3">Select Spouse Language</h2>
+      <h5 className="mb-3">Select Spouse Language</h5>
       <div className="d-grid gap-2">
         <label className="btn btn-secondary">
           <input

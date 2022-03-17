@@ -551,7 +551,7 @@ function CrsCalculator() {
                     <div className="col-12 justify-content-between align-items-center box-shadow p-3 mb-1 border border-white border-2 rounded-border">
                       <div className="row">
                         <div className="col p-0">
-                          <h2 className="text-center text-secondary m-0 display-5 fs-5">
+                          <h2 className="text-center text-secondary m-0 display-5 fs-5 f-bold">
                             Score
                             <div className="float-end trash-icon">
                               <span className="cursor-pointer">

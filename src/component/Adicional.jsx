@@ -196,8 +196,11 @@ function Adicional() {
                   id="aaa3"
                 />
                 <label className="form-check-label" htmlFor="aaa3">
-                  Do you have a real/step brother or sister living in Canada who
-                  is a citizen or permanent resident of Canada?
+                  <p>
+                    {" "}
+                    Do you have a real/step brother or sister living in Canada
+                    who is a citizen or permanent resident of Canada?
+                  </p>
                 </label>
               </div>
               <div className="form-check">
@@ -211,8 +214,10 @@ function Adicional() {
                   id="aaa4"
                 />
                 <label className="form-check-label" htmlFor="aaa4">
-                  Do you have a letter of nomination from a province or
-                  Territory
+                  <p>
+                    Do you have a letter of nomination from a province or
+                    Territory
+                  </p>
                 </label>
               </div>
             </div>

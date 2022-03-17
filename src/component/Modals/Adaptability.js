@@ -71,13 +71,13 @@ const Adaptability = ({ close, submitModal }) => {
               Select your valid option
             </h5>
           </div>
-          <div className="modal-body">
+          <div className="modal-body modal-overflow ">
             {" "}
             <div className="adp-block">
-              <div>
+              <p>
                 Your spouse of partner's language test is equal or greater than
                 CLB4
-              </div>
+              </p>
               <Switch
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -87,7 +87,7 @@ const Adaptability = ({ close, submitModal }) => {
               />
             </div>
             <div className="adp-block">
-              <div>Your past studies in canada at least 2 years full time</div>
+              <p>Your past studies in canada at least 2 years full time</p>
               <Switch
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -97,10 +97,10 @@ const Adaptability = ({ close, submitModal }) => {
               />
             </div>
             <div className="adp-block">
-              <div>
+              <p>
                 Your spouse or partner's past studies in canada at least 2 years
                 full time
-              </div>
+              </p>
               <Switch
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -110,7 +110,7 @@ const Adaptability = ({ close, submitModal }) => {
               />
             </div>
             <div className="adp-block">
-              <div>Your past work ex in canada of at least one year</div>
+              <p>Your past work ex in canada of at least one year</p>
               <Switch
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -120,10 +120,10 @@ const Adaptability = ({ close, submitModal }) => {
               />
             </div>
             <div className="adp-block">
-              <div>
+              <p>
                 Your spouse or partner's past work ex in canada of at least one
                 year
-              </div>
+              </p>
               <Switch
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -133,7 +133,7 @@ const Adaptability = ({ close, submitModal }) => {
               />
             </div>
             <div className="adp-block">
-              <div>Arranged employment in canada</div>
+              <p>Arranged employment in canada</p>
               <Switch
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -143,7 +143,7 @@ const Adaptability = ({ close, submitModal }) => {
               />
             </div>
             <div className="adp-block">
-              <div>Blood relatives in canada</div>
+              <p>Blood relatives in canada</p>
               <Switch
                 uncheckedIcon={false}
                 checkedIcon={false}

@@ -61,7 +61,7 @@ const EducationModal = ({ close, submitModal }) => {
               }`}
               onClick={() => setEduType(1)}
             >
-              Doctoral level university degree(phD)
+              <p className="p-0">Doctoral level university degree(phD)</p>
             </div>
             <div
               className={`education-block ${
@@ -69,8 +69,10 @@ const EducationModal = ({ close, submitModal }) => {
               }`}
               onClick={() => setEduType(2)}
             >
-              Master Degree, or professional degree needed to practice in a
-              licensed profession
+              <p className="p-0">
+                Master Degree, or professional degree needed to practice in a
+                licensed profession
+              </p>
             </div>
             <div
               className={`education-block ${
@@ -78,8 +80,10 @@ const EducationModal = ({ close, submitModal }) => {
               }`}
               onClick={() => setEduType(3)}
             >
-              Two or more certificates, diplomas or degrees. One must be for a
-              program of three or more years
+              <p className="p-0">
+                Two or more certificates, diplomas or degrees. One must be for a
+                program of three or more years
+              </p>
             </div>
             <div
               className={`education-block ${
@@ -87,8 +91,10 @@ const EducationModal = ({ close, submitModal }) => {
               }`}
               onClick={() => setEduType(4)}
             >
-              Bachelor degree or deploma for a program of three years or longer,
-              or equal
+              <p className="p-0">
+                Bachelor degree or deploma for a program of three years or
+                longer, or equal
+              </p>
             </div>
             <div
               className={`education-block ${
@@ -96,8 +102,10 @@ const EducationModal = ({ close, submitModal }) => {
               }`}
               onClick={() => setEduType(5)}
             >
-              Two-year program at a university, collage, trade or technical
-              school
+              <p className="p-0">
+                Two-year program at a university, collage, trade or technical
+                school
+              </p>
             </div>
             <div
               className={`education-block ${
@@ -105,8 +113,10 @@ const EducationModal = ({ close, submitModal }) => {
               }`}
               onClick={() => setEduType(6)}
             >
-              One-Year program at a university, collage, trade or technical
-              school
+              <p className="p-0">
+                One-Year program at a university, collage, trade or technical
+                school
+              </p>
             </div>
             <div
               className={`education-block ${
@@ -114,7 +124,7 @@ const EducationModal = ({ close, submitModal }) => {
               }`}
               onClick={() => setEduType(7)}
             >
-              Secondary diploma(high school graduation)
+              <p className="p-0">Secondary diploma(high school graduation)</p>
             </div>
           </div>
           <div className="modal-footer">

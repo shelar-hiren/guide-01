@@ -70,7 +70,9 @@ function Seducation() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Doctoral level university degree <b>(PhD)</b>
+                <p className="m-0">
+                  Doctoral level university degree <b>(PhD)</b>
+                </p>
               </button>
               <button
                 onClick={() => {
@@ -80,11 +82,13 @@ function Seducation() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Masters Degree,{" "}
-                <b>
-                  or professional degree needed to practice in a licensed
-                  profession
-                </b>
+                <p className="m-0">
+                  Masters Degree,{" "}
+                  <b>
+                    or professional degree needed to practice in a licensed
+                    profession
+                  </b>
+                </p>
               </button>
               <button
                 onClick={() => {
@@ -94,11 +98,13 @@ function Seducation() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Two or more certificates,{" "}
-                <b>
-                  diplomas or degrees. One must be for a program of three or
-                  more years
-                </b>
+                <p className="m-0">
+                  Two or more certificates,{" "}
+                  <b>
+                    diplomas or degrees. One must be for a program of three or
+                    more years
+                  </b>
+                </p>
               </button>
               <button
                 onClick={() => {
@@ -108,10 +114,12 @@ function Seducation() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Bachelor degree{" "}
-                <b>
-                  or diploma for a program of three years or longer, or equal
-                </b>
+                <p className="m-0">
+                  Bachelor degree{" "}
+                  <b>
+                    or diploma for a program of three years or longer, or equal
+                  </b>
+                </p>
               </button>
               <button
                 onClick={(e) => {
@@ -121,8 +129,10 @@ function Seducation() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Two-year program{" "}
-                <b>at a University, college, trade or technical school</b>
+                <p className="m-0">
+                  Two-year program{" "}
+                  <b>at a University, college, trade or technical school</b>
+                </p>
               </button>
               <button
                 onClick={() => {
@@ -132,8 +142,10 @@ function Seducation() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                One-year program{" "}
-                <b>at a University, college, trade or technical school</b>
+                <p className="m-0">
+                  One-year program{" "}
+                  <b>at a University, college, trade or technical school</b>
+                </p>
               </button>
               <button
                 id="se7"
@@ -143,7 +155,9 @@ function Seducation() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Secondary diploma <b>(high school graduation)</b>
+                <p className="m-0">
+                  Secondary diploma <b>(high school graduation)</b>
+                </p>
               </button>
               <button
                 id="se8"
@@ -153,7 +167,9 @@ function Seducation() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                None, <b>or less than secondary(high school)</b>
+                <p className="m-0">
+                  None, <b>or less than secondary(high school)</b>
+                </p>
               </button>
             </div>
           </div>
