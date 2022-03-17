@@ -1,19 +1,37 @@
-import { mview2 } from '../state/modals.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { setceducation, setceducationL } from '../state/valores.js';
+import { mview2 } from "../state/modals.js";
+import { useDispatch, useSelector } from "react-redux";
+import { setceducation, setceducationL } from "../state/valores.js";
 //import { EduLogica } from './funciones.js';
-import { useEffect } from 'react';
+import { useEffect, useRef } from "react";
 
 function Ceducation() {
   const dispatch = useDispatch();
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   //  const count3 = useSelector((state) => state.modals.id2);
   const count5 = useSelector((state) => state.valor.CeducationL);
 
   useEffect(() => {
-    if (count5 === '') {
+    if (count5 === "") {
       console.log(count5);
     } else {
-      document.getElementById(count5).classList.add('active');
+      document.getElementById(count5).classList.add("active");
     }
     //eslint-disable-next-line
   }, []);
@@ -34,10 +52,10 @@ function Ceducation() {
   return (
     <div
       className="modal"
-      style={{ display: 'block', background: '#21004454', zIndex: 99999 }}
+      style={{ display: "block", background: "#21004454", zIndex: 99999 }}
       tabIndex="-1"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p text-secondary">
           <div className="modal-header">
             <h5 className="modal-title">Select Canadian Education Details</h5>
@@ -46,13 +64,13 @@ function Ceducation() {
             <div className="d-grid gap-2">
               <button
                 onClick={() => {
-                  seteduvalor('ce1', 30);
+                  seteduvalor("ce1", 30);
                 }}
                 id="ce1"
                 type="button"
                 className="button button-primary default normal"
               >
-                Masters Degree,{' '}
+                Masters Degree,{" "}
                 <b>
                   or professional degree needed to practice in a licensed
                   profession
@@ -60,7 +78,7 @@ function Ceducation() {
               </button>
               <button
                 onClick={() => {
-                  seteduvalor('ce2', 30);
+                  seteduvalor("ce2", 30);
                 }}
                 id="ce2"
                 type="button"
@@ -70,7 +88,7 @@ function Ceducation() {
               </button>
               <button
                 onClick={() => {
-                  seteduvalor('ce3', 15);
+                  seteduvalor("ce3", 15);
                 }}
                 id="ce3"
                 type="button"
@@ -81,7 +99,7 @@ function Ceducation() {
               <button
                 id="ce4"
                 onClick={() => {
-                  seteduvalor('ce4', 0);
+                  seteduvalor("ce4", 0);
                 }}
                 type="button"
                 className="button button-primary default normal"

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Switch from "react-switch";
 import { setAdpType } from "../../state/score";
 
 const Adaptability = ({ close, submitModal }) => {
+  const ref = useRef();
+
   const dispatch = useDispatch();
   const { adpType } = useSelector((state) => state.Score);
 
@@ -14,6 +16,24 @@ const Adaptability = ({ close, submitModal }) => {
   const [a5, setA5] = useState(adpType.a5);
   const [a6, setA6] = useState(adpType.a6);
   const [a7, setA7] = useState(adpType.a7);
+
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => close());
 
   const save = () => {
     let score = 0;
@@ -44,7 +64,7 @@ const Adaptability = ({ close, submitModal }) => {
       tabIndex="-1"
       style={{ display: "block", background: "#21004454", zIndex: 9999 }}
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p">
           <div className="modal-header">
             <h5 className="modal-title text-secondary">

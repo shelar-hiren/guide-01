@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { mview2, saveid } from "../state/modals.js";
 import { opciones } from "../state/modals2.js";
 import { setvd1, setvd2 } from "../state/state_idioma.js";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { logica, EduLogica, logicawork, logicawork2 } from "./funciones.js";
 import { agevalor, educationvalor, setsm } from "../state/valores.js";
 import { settotal } from "../state/work.js";
@@ -11,6 +11,24 @@ function Modal() {
   const dispatch = useDispatch();
 
   //const [h, setH] = useState(0);
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
 
   const valorE = useSelector((state) => state.valor.education);
   const ids = useSelector((state) => state.modals.id);
@@ -107,7 +125,7 @@ function Modal() {
       tabIndex="-1"
       style={{ display: "block", background: "#21004454", zIndex: 9999 }}
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p">
           <div className="modal-header">
             <h5 className="modal-title text-secondary">

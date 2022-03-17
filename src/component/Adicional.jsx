@@ -1,10 +1,28 @@
 import { mview2 } from "../state/modals.js";
 import { useDispatch, useSelector } from "react-redux";
 import { sets1, sets2, sets3, settotal } from "../state/Ad.js";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 function Adicional() {
   const dispatch = useDispatch();
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   const sp = useSelector((state) => state.ad.s1);
   const sp2 = useSelector((state) => state.ad.s2);
   const sp3 = useSelector((state) => state.ad.s3);
@@ -129,7 +147,7 @@ function Adicional() {
       style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p text-secondary">
           <div className="modal-header">
             <h5 className="modal-title">Additional Points</h5>

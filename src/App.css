@@ -10,6 +10,7 @@
   background: #dee2e4 !important;
   pointer-events: none;
   cursor: not-allowed;
+  border-radius: 10px;
 }
 
 .btn {
@@ -236,10 +237,18 @@ button[data-bs-dismiss="modal"] {
   .mobile-view {
     display: none;
   }
+  .image-contain {
+    width: 20px;
+    height: 20px;
+  }
 }
 @media (max-width: 876px) {
   .web-view {
     display: none;
+  }
+  .image-contain {
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -250,4 +259,40 @@ button[data-bs-dismiss="modal"] {
   width: 100%;
   z-index: 999;
   background: #fff;
+}
+
+.apexcharts-canvas {
+  height: 430px !important;
+}
+.apexcharts-svg {
+  height: 430px !important;
+}
+foreignObject {
+  height: 410px !important;
+}
+
+.apexcharts-datalabel-value {
+  fill: #fff !important;
+}
+
+.modal-header {
+  padding: 10px 5px;
+}
+
+.modal-overflow {
+  height: 400px;
+  overflow: auto;
+}
+
+.trash-icon {
+  position: relative;
+  right: 15px;
+}
+
+.total-score {
+  font-size: 50px;
+}
+
+button {
+  border-radius: 10px;
 }

@@ -1,11 +1,30 @@
 import { mview2 } from "../state/modals.js";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { setswork, setsworkv } from "../state/valores.js";
+import Slider from "react-rangeslider";
+import "react-rangeslider/lib/index.css";
 
 function Swork() {
   const dispatch = useDispatch();
-
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   const count = useSelector((state) => state.valor.Swork);
   const [data, setData] = useState(count);
 
@@ -74,7 +93,7 @@ function Swork() {
       style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p text-secondary">
           <div className="modal-header">
             <h5 className="modal-title">Spouse Canadian Work Experience</h5>
@@ -83,18 +102,19 @@ function Swork() {
             <p className="m-0 mt-3">
               {data} {validandocanadian()}
             </p>
-            <input
-              onChange={(e) => {
-                setData(e.target.value);
-                dispatch(setswork(e.target.value));
+            <Slider
+              id="sworkex"
+              min={0}
+              max={5}
+              value={data}
+              onChangeStart={() => {}}
+              onChange={(value) => {
+                setData(`${value}`);
+                dispatch(setswork(`${value}`));
                 totales();
               }}
-              value={data}
-              type="range"
-              min="0"
-              max="5"
-              step="1"
-              className="form-range mb-3"
+              onChangeComplete={() => {}}
+              step={1}
             />
           </div>
           <div className="modal-footer">

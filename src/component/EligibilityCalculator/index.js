@@ -156,6 +156,16 @@ function EligibilityCalculator() {
       height: 350,
       type: "radialBar",
     },
+    legend: {
+      show: true,
+      floating: true,
+      position: "bottom",
+      fontSize: "12px",
+      labels: {
+        useSeriesColors: false,
+        colors: "#fff",
+      },
+    },
     plotOptions: {
       radialBar: {
         dataLabels: {
@@ -168,6 +178,7 @@ function EligibilityCalculator() {
           total: {
             show: true,
             label: "Total",
+            color: "#fff",
             formatter: function ({ config }) {
               const total = config.series.reduce(
                 (partialSum, a) => partialSum + a,
@@ -196,11 +207,14 @@ function EligibilityCalculator() {
                   </span>
                 </div>
                 <div className="col">
-                  <h2>Eligibility Calculator</h2>
+                  <h2>
+                    <b>Eligibility Calculator</b>
+                  </h2>
+                  <FontAwesomeIcon icon="fa-solid fa-rings-wedding" />
                 </div>
                 <div className="col text-end">
                   <span className="cursor-pointer" onClick={() => reset()}>
-                    <FontAwesomeIcon icon={faTrash} />
+                    <FontAwesomeIcon icon={faTrash} color="#4F515B" />
                   </span>
                 </div>
               </div>
@@ -216,7 +230,7 @@ function EligibilityCalculator() {
                       >
                         <div className="col-auto">
                           <div className="row align-items-center">
-                            <button className="col-auto m-2 d-flex justify-content-center align-items-center button button-primary ">
+                            <button className="col-auto m-2 d-flex justify-content-center align-items-center button button-primary rounded-3">
                               <FontAwesomeIcon
                                 className="fs-6 m-0 fa-sm"
                                 icon={ico[index]}
@@ -229,20 +243,17 @@ function EligibilityCalculator() {
                             </div>
                           </div>
                         </div>
+                        <div className="col-auto p-0">
+                          <p className="m-0 text-secondary fw-bold">
+                            {valores[index]}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   );
                 })}
               </div>
-              <div>
-                <button
-                  onClick={() => setIsOpenCheckEligibility(true)}
-                  type="button"
-                  className="button button-primary default normal icon-left mb-1 rounded"
-                >
-                  Check Eligibility
-                </button>
-              </div>
+              <div></div>
             </div>
             <div className="col col-md-4 background-primary web-score ">
               <h5>Your Eligibility Score</h5>
@@ -264,10 +275,17 @@ function EligibilityCalculator() {
                   options={options}
                   series={series}
                   type="radialBar"
-                  width={300}
-                  height={280}
+                  width={380}
+                  height={350}
                 />
               </div>
+              <button
+                onClick={() => setIsOpenCheckEligibility(true)}
+                type="button"
+                className="button button-primary default normal icon-left mb-1 rounded"
+              >
+                Check Eligibility
+              </button>
             </div>
           </div>
           <div className="mobile-view col-md-6 col-sm-8 col-11">
@@ -277,29 +295,25 @@ function EligibilityCalculator() {
                   <div className="col-12 sticky-header">
                     <div className="row justify-content-center">
                       <div className="col-12 justify-content-between align-items-center box-shadow p-3 mb-1 border border-white border-2 rounded-border">
-                        <h2 className="text-center text-secondary m-0 display-5 fs-5">
-                          Your Eligibility Score
-                        </h2>
-                        <h1 className="text-center text-secondary m-0 display-2">
-                          {totalScore}
-                        </h1>
-                        <div className="row mt-3 d-flex justify-content-center">
-                          <div className="col-auto">
-                            <button
-                              className="rounded button button-primary default normal icon-left"
-                              onClick={() => reset()}
-                            >
-                              <FontAwesomeIcon icon={faTrash} />
-                            </button>
-                          </div>
-                          <div className="col-auto">
-                            <button
-                              onClick={() => setIsOpenCheckEligibility(true)}
-                              type="button"
-                              className="button button-primary default normal icon-left mb-1 rounded"
-                            >
-                              Check Eligibility
-                            </button>
+                        <div className="row">
+                          <div className="col p-0">
+                            <h2 className="text-center text-secondary m-0 display-5 fs-5">
+                              Your Eligibility Score
+                              <div className="float-end trash-icon">
+                                <span
+                                  className="cursor-pointer"
+                                  onClick={() => reset()}
+                                >
+                                  <FontAwesomeIcon
+                                    icon={faTrash}
+                                    color="#4F515B"
+                                  />
+                                </span>
+                              </div>
+                            </h2>
+                            <h1 className="text-center text-secondary m-0 display-2 total-score">
+                              {totalScore}
+                            </h1>
                           </div>
                         </div>
                       </div>
@@ -320,6 +334,15 @@ function EligibilityCalculator() {
                         </div>
                       );
                     })}
+                  </div>
+                  <div className="col-auto">
+                    <button
+                      onClick={() => setIsOpenCheckEligibility(true)}
+                      type="button"
+                      className="button button-primary default normal icon-left mb-1 rounded"
+                    >
+                      Check Eligibility
+                    </button>
                   </div>
                 </div>
               </div>

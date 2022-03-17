@@ -137,7 +137,7 @@ function Reset({ iswebView }) {
     <>
       {iswebView ? (
         <span className="cursor-pointer" onClick={() => reset()}>
-          <FontAwesomeIcon icon={faTrash} />
+          <FontAwesomeIcon icon={faTrash} color="#4F515B" />
         </span>
       ) : (
         <button

@@ -3,11 +3,28 @@ import L1 from "./language/L1.jsx";
 import L2 from "./language/L2.jsx";
 import Score from "./language/Score.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function Language() {
   const dispatch = useDispatch();
-
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   const next = useSelector((state) => state.idioma.next);
 
   const a2 = (
@@ -79,7 +96,7 @@ function Language() {
       style={{ display: "block", background: "#21004454", zIndex: 99999 }}
       tabIndex="-1"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p">
           <div className="modal-header">
             <h5 className="modal-title text-secondary">{h2}</h5>

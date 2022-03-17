@@ -1,6 +1,8 @@
-import { useState } from 'react';
-import { setVL1, setVR1, setVW1, setVS1 } from '../../state/state_idioma.js';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from "react";
+import { setVL1, setVR1, setVW1, setVS1 } from "../../state/state_idioma.js";
+import { useSelector, useDispatch } from "react-redux";
+import Slider from "react-rangeslider";
+import "react-rangeslider/lib/index.css";
 
 function Range(props) {
   const dispatch = useDispatch();
@@ -17,71 +19,72 @@ function Range(props) {
   return (
     <>
       <p className="fw-bold text-secondary">
-        Listening: <span className="fw-normal text-secondary">{listening}</span>{' '}
+        Listening: <span className="fw-normal text-secondary">{listening}</span>{" "}
       </p>
-      <input
-        onChange={(e) => {
-          setListening(e.target.value);
-          dispatch(setVL1(e.target.value));
-        }}
-        type="range"
-        value={listening}
-        className="form-range"
+      <Slider
+        id="customRange1"
         min={props.param.Lmin}
         max={props.param.Lmax}
-        step={props.param.step}
-        id="customRange1"
-      />
-      <p className="fw-bold text-secondary">
-        Reading: <span className="fw-normal text-secondary">{reading}</span>{' '}
-      </p>
-
-      <input
-        onChange={(e) => {
-          setReading(e.target.value);
-          dispatch(setVR1(e.target.value));
+        value={listening}
+        onChangeStart={() => {}}
+        onChange={(value) => {
+          setListening(value);
+          dispatch(setVL1(value));
         }}
-        value={reading}
-        type="range"
-        className="form-range"
+        onChangeComplete={() => {}}
+        step={props.param.step}
+      />
+
+      <p className="fw-bold text-secondary">
+        Reading: <span className="fw-normal text-secondary">{reading}</span>{" "}
+      </p>
+      <Slider
+        id="customRange2"
         min={props.param.Rmin}
         max={props.param.Rmax}
+        value={reading}
+        onChangeStart={() => {}}
+        onChange={(value) => {
+          setReading(value);
+          dispatch(setVR1(value));
+        }}
+        onChangeComplete={() => {}}
         step={props.param.step}
-        id="customRange2"
       />
+
       <p className="fw-bold text-secondary">
-        Writing: <span className="fw-normal text-secondary">{writing}</span>{' '}
+        Writing: <span className="fw-normal text-secondary">{writing}</span>{" "}
       </p>
 
-      <input
-        onChange={(e) => {
-          setWriting(e.target.value);
-          dispatch(setVW1(e.target.value));
-        }}
-        value={writing}
-        type="range"
-        className="form-range"
+      <Slider
+        id="customRange3"
         min={props.param.Wmin}
         max={props.param.Wmax}
+        value={writing}
+        onChangeStart={() => {}}
+        onChange={(value) => {
+          setWriting(value);
+          dispatch(setVW1(value));
+        }}
+        onChangeComplete={() => {}}
         step={props.param.step}
-        id="customRange3"
       />
       <p className="fw-bold text-secondary">
-        Speaking: <span className="fw-normal text-secondary">{speaking}</span>{' '}
+        Speaking: <span className="fw-normal text-secondary">{speaking}</span>{" "}
       </p>
 
-      <input
-        onChange={(e) => {
-          setSpeaking(e.target.value);
-          dispatch(setVS1(e.target.value));
-        }}
-        value={speaking}
-        type="range"
-        className="form-range"
+      <Slider
+        id="customRange4"
         min={props.param.Smin}
         max={props.param.Smax}
+        value={speaking}
+        onChangeStart={() => {}}
+        onChange={(value) => {
+          setSpeaking(value);
+          dispatch(setVS1(value));
+        }}
+        onChangeComplete={() => {}}
         step={props.param.step}
-        id="customRange4"
       />
     </>
   );

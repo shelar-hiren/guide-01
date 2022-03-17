@@ -2,10 +2,28 @@ import { mview2 } from "../state/modals.js";
 import { useDispatch, useSelector } from "react-redux";
 import { setseducationL, setseducation } from "../state/valores.js";
 //import { EduLogica } from './funciones.js';
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 function Seducation() {
   const dispatch = useDispatch();
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   //  const count3 = useSelector((state) => state.modals.id2);
   const count5 = useSelector((state) => state.valor.SeducationL);
 
@@ -37,12 +55,12 @@ function Seducation() {
       style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p text-secondary">
           <div className="modal-header">
             <h5 className="modal-title">Select your Education Details</h5>
           </div>
-          <div className="modal-body">
+          <div className="modal-body modal-overflow">
             <div className="d-grid gap-2">
               <button
                 onClick={() => {

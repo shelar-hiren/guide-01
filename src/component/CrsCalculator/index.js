@@ -20,7 +20,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { mview1, setGD } from "../../state/modals";
 import { useState, useEffect } from "react";
 import {
-  faRing,
   faCakeCandles,
   faGraduationCap,
   faLanguage,
@@ -29,10 +28,10 @@ import {
   faPlaneDeparture,
   faUserGraduate,
   faArrowLeft,
-  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Chart from "react-apexcharts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import WeddingRing from "../../assets/wedding-ring.svg";
 
 function CrsCalculator() {
   const count = useSelector((state) => state.modals.value);
@@ -69,7 +68,7 @@ function CrsCalculator() {
   ];
 
   const ico = [
-    faRing,
+    WeddingRing,
     faPlaneDeparture,
     faCakeCandles,
     faGraduationCap,
@@ -295,8 +294,6 @@ function CrsCalculator() {
     }
   }
   const text3 = [
-    "Marital Status",
-    "Accompanying Spouse",
     "Age",
     "Education",
     "Language",
@@ -325,6 +322,16 @@ function CrsCalculator() {
       height: 350,
       type: "radialBar",
     },
+    legend: {
+      show: true,
+      floating: true,
+      position: "bottom",
+      fontSize: "12px",
+      labels: {
+        useSeriesColors: false,
+        colors: "#fff",
+      },
+    },
     plotOptions: {
       radialBar: {
         dataLabels: {
@@ -337,6 +344,7 @@ function CrsCalculator() {
           total: {
             show: true,
             label: "Total",
+            color: "#fff",
             formatter: function ({ config }) {
               const total = config.series.reduce(
                 (partialSum, a) => partialSum + a,
@@ -348,7 +356,17 @@ function CrsCalculator() {
         },
       },
     },
-    colors: ["#01A7A3", "#206A5D", "#EADCA6", "#C6B4CE", "#0092CA", "#50717B"],
+    colors: [
+      "#01A7A3",
+      "#206A5D",
+      "#EADCA6",
+      "#C6B4CE",
+      "#0092CA",
+      "#779ca7",
+      "#9be0df",
+      "#4ff7d9",
+      "#a2af57",
+    ],
     labels: text3,
   };
 
@@ -373,7 +391,10 @@ function CrsCalculator() {
                 </span>
               </div>
               <div className="col">
-                <h2>CRS Calculator</h2>
+                <h2>
+                  {" "}
+                  <b>CRS Calculator</b>
+                </h2>
               </div>
               <div className="col text-end">
                 <span className="cursor-pointer">
@@ -390,21 +411,37 @@ function CrsCalculator() {
                       onClick={() => {
                         dispatch(mview1(modales[index]));
                       }}
-                      className={`row justify-content-between align-items-center  p-3 mb-1 border border-white border-2 bg-p web-card ${es}`}
+                      className={`row justify-content-between align-items-center  p-3 mb-1 border border-white border-2 bg-p web-card ${es} `}
                     >
                       <div className="col-auto">
                         <div className="row align-items-center">
-                          <button className="col-auto m-2 d-flex justify-content-center align-items-center button button-primary ">
-                            <FontAwesomeIcon
-                              className="fs-6 m-0 fa-sm"
-                              icon={ico[index]}
-                            />
+                          <button className="col-auto m-2 d-flex justify-content-center align-items-center button rounded-3 button-primary ">
+                            {i === "Marital Status" ? (
+                              <div>
+                                <img
+                                  className="image-contain"
+                                  src={ico[index]}
+                                />
+                              </div>
+                            ) : (
+                              <FontAwesomeIcon
+                                className="fs-6 m-0 fa-sm"
+                                icon={ico[index]}
+                              />
+                            )}
                           </button>
                           <div className="col-auto px-0">
                             <p className="m-0 text-secondary card-text">{i}</p>
                           </div>
                         </div>
                       </div>
+                      {index !== 0 && index !== 1 && (
+                        <div className="col-auto p-0">
+                          <p className="m-0 text-secondary fw-bold">
+                            {valores[index]}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
@@ -433,30 +470,16 @@ function CrsCalculator() {
                           </div>
                         </div>
                       </div>
+                      <div className="col-auto p-0">
+                        <p className="m-0 text-secondary fw-bold">
+                          {d2v[index]}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );
               })}
-            <div>
-              <button
-                onClick={() => {
-                  dispatch(mview1("Analysis"));
-                }}
-                type="button"
-                className="button button-primary default normal icon-left mb-1 rounded m-1"
-              >
-                CRS Analysis
-              </button>
-              <button
-                onClick={() => {
-                  dispatch(mview1("Rec"));
-                }}
-                type="button"
-                className="button button-primary default normal icon-left mb-1 rounded"
-              >
-                Score Recommendations
-              </button>
-            </div>
+            <div></div>
           </div>
           <div className="col col-md-4 background-primary web-score ">
             <h5>Your Score</h5>
@@ -497,6 +520,26 @@ function CrsCalculator() {
                 height={350}
               />
             </div>
+            <div className="d-grid">
+              <button
+                onClick={() => {
+                  dispatch(mview1("Analysis"));
+                }}
+                type="button"
+                className="button button-primary default normal icon-left mb-3 rounded m-1"
+              >
+                CRS Analysis
+              </button>
+              <button
+                onClick={() => {
+                  dispatch(mview1("Rec"));
+                }}
+                type="button"
+                className="button button-primary default normal icon-left mb-1 rounded"
+              >
+                Score Recommendations
+              </button>
+            </div>
           </div>
         </div>
         <div className="mobile-view col-md-6 col-sm-8 col-11">
@@ -506,37 +549,19 @@ function CrsCalculator() {
                 <div className="col-12 sticky-header">
                   <div className="row justify-content-center">
                     <div className="col-12 justify-content-between align-items-center box-shadow p-3 mb-1 border border-white border-2 rounded-border">
-                      <h2 className="text-center text-secondary m-0 display-5 fs-5">
-                        Score
-                      </h2>
-                      <h1 className="text-center text-secondary m-0 display-2">
-                        {grantotal()}
-                      </h1>
-                      <div className="row mt-3 d-flex justify-content-center">
-                        <div className="col-auto">
-                          <Reset />
-                        </div>
-                        <div className="col-auto">
-                          <button
-                            onClick={() => {
-                              dispatch(mview1("Analysis"));
-                            }}
-                            type="button"
-                            className="button button-primary default normal icon-left mb-1 rounded"
-                          >
-                            CRS Analysis
-                          </button>
-                        </div>
-                        <div className="col-auto">
-                          <button
-                            onClick={() => {
-                              dispatch(mview1("Rec"));
-                            }}
-                            type="button"
-                            className="button button-primary default normal icon-left mb-1 rounded"
-                          >
-                            Score Recommendations
-                          </button>
+                      <div className="row">
+                        <div className="col p-0">
+                          <h2 className="text-center text-secondary m-0 display-5 fs-5">
+                            Score
+                            <div className="float-end trash-icon">
+                              <span className="cursor-pointer">
+                                <Reset iswebView={true} />
+                              </span>
+                            </div>
+                          </h2>
+                          <h1 className="text-center text-secondary m-0 display-2 total-score">
+                            {grantotal()}
+                          </h1>
                         </div>
                       </div>
                     </div>
@@ -548,6 +573,7 @@ function CrsCalculator() {
                     return (
                       <div className="col-lg-12 mt-3" key={i.length}>
                         <Card
+                          type={i}
                           value={valores[index]}
                           styles={es}
                           ico={ico[index]}
@@ -560,6 +586,28 @@ function CrsCalculator() {
                     );
                   })}
                   {Spouse(con2)}
+                </div>
+                <div className="col-auto">
+                  <button
+                    onClick={() => {
+                      dispatch(mview1("Analysis"));
+                    }}
+                    type="button"
+                    className="button button-primary default normal icon-left mb-1 rounded"
+                  >
+                    CRS Analysis
+                  </button>
+                </div>
+                <div className="col-auto">
+                  <button
+                    onClick={() => {
+                      dispatch(mview1("Rec"));
+                    }}
+                    type="button"
+                    className="button button-primary default normal icon-left mb-1 rounded"
+                  >
+                    Score Recommendations
+                  </button>
                 </div>
               </div>
             </div>

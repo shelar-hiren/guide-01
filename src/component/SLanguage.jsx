@@ -3,11 +3,28 @@ import L1 from "./Slanguage/L1.jsx";
 import L2 from "./Slanguage/L2.jsx";
 import Score from "./Slanguage/Score.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function SLanguage() {
   const dispatch = useDispatch();
-
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   const next = useSelector((state) => state.Sidioma.next);
 
   const a2 = (
@@ -79,7 +96,7 @@ function SLanguage() {
       style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p text-secondary">
           <div className="modal-header">
             <h5 className="modal-title">{h2}</h5>

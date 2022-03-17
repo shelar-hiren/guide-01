@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { mview2, saveid2 } from "../state/modals.js";
 import { agevalor, educationvalor } from "../state/valores.js";
 import { logica, EduLogica, logicawork, logicawork2 } from "./funciones.js";
@@ -8,6 +8,24 @@ import { settotal } from "../state/work.js";
 
 function Modal2() {
   const dispatch = useDispatch();
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   const ids = useSelector((state) => state.modals.id2);
 
   const count5 = useSelector((state) => state.valor.ageL);
@@ -68,7 +86,7 @@ function Modal2() {
       tabIndex="-1"
       style={{ display: "block", background: "#21004454", zIndex: 9999 }}
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p">
           <div className="modal-header">
             <h5 className="modal-title text-secondary">

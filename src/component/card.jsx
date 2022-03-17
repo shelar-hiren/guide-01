@@ -13,7 +13,13 @@ function Card(props) {
             className="col-auto m-2 d-flex justify-content-center align-items-center rounded-border button button-primary "
             style={{ width: "80px", height: "80px" }}
           >
-            <FontAwesomeIcon className="fs-1 m-0" icon={props.ico} />
+            {props.type === "Marital Status" ? (
+              <div>
+                <img className="image-contain" src={props.ico} />
+              </div>
+            ) : (
+              <FontAwesomeIcon className="fs-1 m-0" icon={props.ico} />
+            )}
           </button>
           <div className="col-auto px-0">
             <p className="m-0 fw-bold text-secondary">{props.txt}</p>

@@ -2,10 +2,28 @@ import { mview2 } from "../state/modals.js";
 import { useDispatch, useSelector } from "react-redux";
 import { educationvalor, educationvalorL } from "../state/valores.js";
 import { EduLogica } from "./funciones.js";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 function Education() {
   const dispatch = useDispatch();
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   const count3 = useSelector((state) => state.modals.id2);
   const count5 = useSelector((state) => state.valor.educationL);
 
@@ -37,14 +55,14 @@ function Education() {
       style={{ display: "block", background: "#21004454", zIndex: 99999 }}
       tabIndex="-1"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p">
           <div className="modal-header">
             <h5 className="modal-title text-secondary">
               Select your Education Details
             </h5>
           </div>
-          <div className="modal-body">
+          <div className="modal-body modal-overflow">
             <div className="d-grid gap-2">
               <button
                 onClick={() => {
@@ -54,7 +72,10 @@ function Education() {
                 type="button"
                 className="btn-secondary button-primary button"
               >
-                Doctoral level university degree <b>(PhD)</b>
+                <p className="m-0">
+                  {" "}
+                  Doctoral level university degree <b>(PhD)</b>
+                </p>
               </button>
               <button
                 onClick={() => {
@@ -64,11 +85,13 @@ function Education() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Masters Degree,{" "}
-                <b>
-                  or professional degree needed to practice in a licensed
-                  profession
-                </b>
+                <p className="m-0">
+                  Masters Degree,{" "}
+                  <b>
+                    or professional degree needed to practice in a licensed
+                    profession
+                  </b>
+                </p>
               </button>
               <button
                 onClick={() => {
@@ -78,11 +101,13 @@ function Education() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Two or more certificates,{" "}
-                <b>
-                  diplomas or degrees. One must be for a program of three or
-                  more years
-                </b>
+                <p className="m-0">
+                  Two or more certificates,{" "}
+                  <b>
+                    diplomas or degrees. One must be for a program of three or
+                    more years
+                  </b>
+                </p>
               </button>
               <button
                 onClick={() => {
@@ -92,10 +117,12 @@ function Education() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Bachelor degree{" "}
-                <b>
-                  or diploma for a program of three years or longer, or equal
-                </b>
+                <p className="m-0">
+                  Bachelor degree{" "}
+                  <b>
+                    or diploma for a program of three years or longer, or equal
+                  </b>
+                </p>
               </button>
               <button
                 onClick={(e) => {
@@ -105,8 +132,10 @@ function Education() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Two-year program{" "}
-                <b>at a University, college, trade or technical school</b>
+                <p className="m-0">
+                  Two-year program{" "}
+                  <b>at a University, college, trade or technical school</b>
+                </p>
               </button>
               <button
                 onClick={() => {
@@ -116,8 +145,10 @@ function Education() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                One-year program{" "}
-                <b>at a University, college, trade or technical school</b>
+                <p className="m-0">
+                  One-year program{" "}
+                  <b>at a University, college, trade or technical school</b>
+                </p>
               </button>
               <button
                 id="e7"
@@ -127,7 +158,9 @@ function Education() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                Secondary diploma <b>(high school graduation)</b>
+                <p className="m-0">
+                  Secondary diploma <b>(high school graduation)</b>
+                </p>
               </button>
               <button
                 id="e8"
@@ -137,7 +170,9 @@ function Education() {
                 type="button"
                 className="btn-secondary button-primary"
               >
-                None, <b>or less than secondary(high school)</b>
+                <p className="m-0">
+                  None, <b>or less than secondary(high school)</b>
+                </p>
               </button>
             </div>
           </div>

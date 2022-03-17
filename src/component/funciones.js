@@ -315,7 +315,8 @@ export function EduLogica(e, c) {
 }
 
 export function logicawork(n, v) {
-  switch (n + v + "") {
+  const value = n ? n + v + "" : v + n + "";
+  switch (value) {
     case "10":
       return 40;
       //eslint-disable-next-line

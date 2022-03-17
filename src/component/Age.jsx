@@ -1,7 +1,7 @@
 import { mview2 } from "../state/modals.js";
 import { agevalor, agevalorL } from "../state/valores.js";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { logica } from "./funciones.js";
 import { DatePickerInput } from "rc-datepicker";
 import "rc-datepicker/lib/style.css";
@@ -10,7 +10,24 @@ function Age() {
   const count3 = useSelector((state) => state.modals.id2);
   //const count4 = useSelector((state) => state.valor.age);
   const count5 = useSelector((state) => state.valor.ageL);
-
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   useEffect(() => {
     document.getElementById("entrada").value = count5;
   }, [count5]);
@@ -29,7 +46,7 @@ function Age() {
       style={{ display: "block", background: "#21004454", zIndex: 99999 }}
       tabIndex="-1"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p">
           <div className="modal-header">
             <h5 className="modal-title text-secondary">Your age</h5>

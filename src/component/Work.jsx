@@ -1,10 +1,30 @@
 import { mview2 } from "../state/modals.js";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { setn1w, setn2w, setcheck, settotal } from "../state/work.js";
 import { logicawork, logicawork2 } from "./funciones.js";
+import Slider from "react-rangeslider";
+import "react-rangeslider/lib/index.css";
 
 function Work() {
+  const ref = useRef();
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => dispatch(mview2()));
   const n1 = useSelector((state) => state.work.n1);
   const n2 = useSelector((state) => state.work.n2);
   const c = useSelector((state) => state.work.check);
@@ -15,7 +35,6 @@ function Work() {
   const [canadian, setCanadian] = useState(n1);
   const [foreign, setForeign] = useState(n2);
   const [m, setM] = useState(c);
-
   function ctotal() {
     //console.log(count);
     switch (count) {
@@ -104,7 +123,7 @@ function Work() {
       style={{ display: "block", background: "#21004454", zIndex: 9999 }}
       tabIndex="-1"
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p text-secondary">
           <div className="modal-header">
             <h5 className="modal-title">Work Experience</h5>
@@ -114,39 +133,43 @@ function Work() {
             <p className="m-0">
               {canadian} {validandocanadian()}
             </p>
-            <input
-              onChange={(e) => {
-                setCanadian(e.target.value);
-                dispatch(setn1w(e.target.value));
-              }}
-              type="range"
-              min="0"
-              max="5"
-              step="1"
+
+            <Slider
+              id="canadianex"
+              min={0}
+              max={5}
               value={canadian}
-              className="form-range"
+              onChangeStart={() => {}}
+              onChange={(value) => {
+                setCanadian(`${value}`);
+                dispatch(setn1w(`${value}`));
+              }}
+              onChangeComplete={() => {}}
+              step={1}
             />
+
             <p className="fw-bold mt-4">Foreign Work Experience</p>
             <p className="m-0">
               {foreign} {foreigncanadian()}
             </p>
-            <input
-              onChange={(e) => {
-                setForeign(e.target.value);
-                dispatch(setn2w(e.target.value));
-              }}
+
+            <Slider
+              id="foreignex"
+              min={0}
+              max={3}
               value={foreign}
-              type="range"
-              min="0"
-              max="3"
-              step="1"
-              className="form-range"
+              onChangeStart={() => {}}
+              onChange={(value) => {
+                setForeign(`${value}`);
+                dispatch(setn2w(`${value}`));
+              }}
+              onChangeComplete={() => {}}
+              step={1}
             />
 
             <div className="form-check mt-4">
               <input
                 onChange={(e) => {
-                  //console.log(e.target.checked);
                   setM(e.target.checked);
                   dispatch(setcheck(e.target.checked));
                 }}
@@ -156,8 +179,11 @@ function Work() {
                 id="flexCheckDefault"
               />
               <label className="form-check-label" htmlFor="flexCheckDefault">
-                Do you have a certificate of qualification from a canadian
-                province or territory?
+                <p>
+                  {" "}
+                  Do you have a certificate of qualification from a canadian
+                  province or territory?
+                </p>
               </label>
             </div>
           </div>

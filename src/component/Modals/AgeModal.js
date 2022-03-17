@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
+import React, { useEffect, useState, useRef } from "react";
 import moment from "moment";
 import { setAgeValue } from "../../state/score";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +8,8 @@ import "rc-datepicker/lib/style.css";
 import { logica } from "../funciones";
 
 const AgeModal = ({ close, submitModal }) => {
+  const ref = useRef();
+
   const { ageValue } = useSelector((state) => state.Score);
   const [dateOfBirth, setDateOfBirth] = useState(ageValue);
   const dispatch = useDispatch();
@@ -32,13 +33,31 @@ const AgeModal = ({ close, submitModal }) => {
     setDateOfBirth(date);
   };
 
+  function useOnClickOutside(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
+  }
+  useOnClickOutside(ref, () => close());
+
   return (
     <div
       className="modal"
       tabIndex="-1"
       style={{ display: "block", background: "#21004454", zIndex: 9999 }}
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" ref={ref}>
         <div className="modal-content bg-p">
           <div className="modal-header">
             <h5 className="modal-title text-secondary">
