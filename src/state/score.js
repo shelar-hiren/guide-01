@@ -47,6 +47,9 @@ export const ScoreSlice = createSlice({
     setArrange: (state, action) => {
       state.arrange = action.payload;
     },
+    setSelectedDate: (state, action) => {
+      state.selectedDate = action.payload;
+    },
   },
 });
 
@@ -58,6 +61,7 @@ export const {
   setExpValue,
   setLang,
   setAdpType,
+  setSelectedDate,
 } = ScoreSlice.actions;
 
 export default ScoreSlice.reducer;

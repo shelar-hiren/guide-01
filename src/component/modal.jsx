@@ -166,7 +166,7 @@ function Modal() {
                 onClick={(e) => activo(e.target, true)}
                 className="button button-primary default normal"
               >
-                Annulled Marriege
+                Annulled Marriage
               </button>
               <button
                 type="button"

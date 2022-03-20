@@ -345,6 +345,7 @@ function CrsCalculator() {
             show: true,
             label: "Total",
             color: "#fff",
+            fontFamily: "Quicksand",
             formatter: function ({ config }) {
               const total = config.series.reduce(
                 (partialSum, a) => partialSum + a,

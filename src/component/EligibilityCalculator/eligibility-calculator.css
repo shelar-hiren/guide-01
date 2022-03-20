@@ -31,11 +31,11 @@
   cursor: pointer;
 }
 p {
-  font-family: "Roboto Slab", serif;
-  font-size: 13px;
+  font-family: "Quicksand", serif;
+  font-size: 15px;
 }
 .apexcharts-legend-text {
-  font-family: "Roboto Slab", serif !important;
+  font-family: "Quicksand", serif !important;
 }
 
 .web-card:hover {
@@ -53,6 +53,7 @@ p {
 
 .web-cal-text {
   text-align: left;
+  font-family: "Quicksand", serif;
 }
 .cursor-pointer {
   cursor: pointer;

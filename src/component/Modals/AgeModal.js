@@ -1,22 +1,24 @@
 import React, { useEffect, useState, useRef } from "react";
 import moment from "moment";
-import { setAgeValue } from "../../state/score";
+import { setAgeValue, setSelectedDate } from "../../state/score";
 import { useDispatch, useSelector } from "react-redux";
-import { DatePickerInput } from "rc-datepicker";
-import "rc-datepicker/lib/style.css";
-
 import { logica } from "../funciones";
+import CustomDatePick from "./customDatePicker";
 
 const AgeModal = ({ close, submitModal }) => {
   const ref = useRef();
 
-  const { ageValue } = useSelector((state) => state.Score);
-  const [dateOfBirth, setDateOfBirth] = useState(ageValue);
+  const { ageValue, selectedDate } = useSelector((state) => state.Score);
+  const [dateOfBirth, setDateOfBirth] = useState(
+    moment(selectedDate).format("YYYY-MM-DD")
+  );
   const dispatch = useDispatch();
-  useEffect(() => {
-    document.getElementById("entrada").value = dateOfBirth;
-  }, [dateOfBirth]);
 
+  const onGetDate = (selectedDate) => {
+    const date = moment(selectedDate).format("YYYY-MM-DD");
+    setDateOfBirth(date);
+    dispatch(setSelectedDate(selectedDate));
+  };
   const saveDOB = () => {
     if (dateOfBirth) {
       const year = new Date();
@@ -26,11 +28,6 @@ const AgeModal = ({ close, submitModal }) => {
     } else {
       alert("Please select date");
     }
-  };
-
-  const onChange = (jsDate) => {
-    const date = moment(jsDate).format("YYYY-MM-DD");
-    setDateOfBirth(date);
   };
 
   function useOnClickOutside(ref, handler) {
@@ -64,16 +61,9 @@ const AgeModal = ({ close, submitModal }) => {
               Select your date of birth
             </h5>
           </div>
+
           <div className="modal-body">
-            <div>
-              <DatePickerInput
-                type="date"
-                format="YYYY/MM/DD"
-                id="entrada"
-                className="my-custom-datepicker-component"
-                onChange={onChange}
-              />
-            </div>
+            <CustomDatePick selectedDate={selectedDate} onGetDate={onGetDate} />
           </div>
           <div className="modal-footer">
             <button

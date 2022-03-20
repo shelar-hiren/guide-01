@@ -108,6 +108,7 @@ button[data-bs-dismiss="modal"] {
   border-radius: 10px;
   box-shadow: 0 1px 2px 0 rgb(85 97 226 / 50%);
   margin-bottom: 10px;
+  font-family: "Quicksand", serif;
 }
 .education-block-select {
   background-color: #5561e2;
@@ -296,4 +297,12 @@ foreignObject {
 button {
   border-radius: 10px;
   font-family: "Roboto Slab", serif !important;
+}
+
+.custom-datepicker {
+  display: flex;
+}
+
+.date-picker div {
+  display: flex;
 }

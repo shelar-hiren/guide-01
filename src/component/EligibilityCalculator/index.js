@@ -179,6 +179,7 @@ function EligibilityCalculator() {
             show: true,
             label: "Total",
             color: "#fff",
+            fontFamily: "Quicksand",
             formatter: function ({ config }) {
               const total = config.series.reduce(
                 (partialSum, a) => partialSum + a,
@@ -210,7 +211,6 @@ function EligibilityCalculator() {
                   <h2>
                     <b>Eligibility Calculator</b>
                   </h2>
-                  <FontAwesomeIcon icon="fa-solid fa-rings-wedding" />
                 </div>
                 <div className="col text-end">
                   <span className="cursor-pointer" onClick={() => reset()}>
@@ -230,7 +230,10 @@ function EligibilityCalculator() {
                       >
                         <div className="col-auto">
                           <div className="row align-items-center">
-                            <button className="col-auto m-2 d-flex justify-content-center align-items-center button button-primary rounded-3">
+                            <button
+                              style={{ height: "40px", width: "43px" }}
+                              className="col-auto m-2 d-flex justify-content-center align-items-center button button-primary rounded-3"
+                            >
                               <FontAwesomeIcon
                                 className="fs-6 m-0 fa-sm"
                                 icon={ico[index]}
