@@ -416,7 +416,10 @@ function CrsCalculator() {
                     >
                       <div className="col-auto">
                         <div className="row align-items-center">
-                          <button className="col-auto m-2 d-flex justify-content-center align-items-center button rounded-3 button-primary ">
+                          <button
+                            style={{ height: "40px", width: "43px" }}
+                            className="col-auto m-2 d-flex justify-content-center align-items-center button rounded-3 button-primary "
+                          >
                             {i === "Marital Status" ? (
                               <div>
                                 <img
