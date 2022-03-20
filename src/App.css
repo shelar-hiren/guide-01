@@ -306,3 +306,8 @@ button {
 .date-picker div {
   display: flex;
 }
+
+.web-cal-text {
+  text-align: left;
+  font-family: "Quicksand", serif;
+}
